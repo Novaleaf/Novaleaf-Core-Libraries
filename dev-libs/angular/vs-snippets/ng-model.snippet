@@ -1,0 +1,36 @@
+﻿<CodeSnippet Format="1.1.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ng-model</Title>
+    <Author>Novaleaf</Author>
+    <Shortcut>ng-model</Shortcut>
+    <AlternativeShortcuts>
+      <!--<Shortcut>ngModel</Shortcut>-->
+    </AlternativeShortcuts>
+    <Description>Is directive that tells Angular to do two-way data binding. It works together with input, select, textarea. You can easily write your own directives to use ngModel as well.
+
+ngModel is responsible for:
+
+binding the view into the model, which other directives such as input, textarea or select require,
+providing validation behavior (i.e. required, number, email, url),
+keeping state of the control (valid/invalid, dirty/pristine, validation errors),
+setting related css class onto the element (ng-valid, ng-invalid, ng-dirty, ng-pristine),
+register the control with parent form.
+
+  example:  {input type="text" name="userName" ng-model="user.name" required}
+  </Description>
+    <SnippetTypes>
+      <SnippetType>Expansion</SnippetType>
+      <!--<SnippetType>SurroundsWith</SnippetType>-->
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>selected</ID>
+        <ToolTip>{string} Assignable angular expression to data-bind to</ToolTip>
+        <Default>user.name</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="html"><![CDATA[$shortcut$="$selected$"$end$]]></Code>
+  </Snippet>
+</CodeSnippet>

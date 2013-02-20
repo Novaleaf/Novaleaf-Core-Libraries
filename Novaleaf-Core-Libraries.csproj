@@ -458,6 +458,7 @@
     <Content Include="dev-libs\angular\1.0.4\jstd-scenario-adapter-config.js" />
     <Content Include="dev-libs\angular\1.0.4\jstd-scenario-adapter.js" />
     <Content Include="dev-libs\angular\1.0.4\version.txt" />
+    <Content Include="dev-libs\angular\angular.css" />
     <Content Include="dev-libs\jquery\jquery-1.9.1.js" />
     <Content Include="dev-libs\knockback\0.16.8\knockback-full-stack.js" />
     <Content Include="scripts\angular.js">
@@ -514,6 +515,14 @@
     <Content Include="scripts\angular.js.map">
       <DependentUpon>angular.ts</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dev-libs\angular\install-xhtml5-ng-to-vs2012.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dev-libs\angular\xhtml_5-ng.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

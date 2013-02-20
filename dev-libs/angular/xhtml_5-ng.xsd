@@ -33,19 +33,33 @@
 	<xsd:include schemaLocation="CommonHTML5Types.xsd" />
 
 <!-- angular attribute types -->
-	<xsd:simpleType name="ngExpressionType">
-		<xsd:union>
-			<xsd:simpleType>
-				<xsd:restriction base="xsd:string">
-					<xsd:enumeration value=" {expression}" />
-					<xsd:enumeration value='//example1 expression evaluated: "scopeMethod()"' />
-				</xsd:restriction>
-			</xsd:simpleType>
-			<xsd:simpleType>
-				<xsd:restriction base="xsd:string" />
-			</xsd:simpleType>
-		</xsd:union>
-	</xsd:simpleType>
+  <xsd:simpleType name="ngExpressionType">
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value=" {expression}" />
+          <xsd:enumeration value='//example1 expression evaluated: "scopeMethod()"' />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="ngDatabindType">
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value=" {databind expression}" />
+          <xsd:enumeration value='//example1 expression evaluated: "dataObject.value"' />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string" />
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
 
 	<xsd:simpleType name="ngRepeatExpressionType">
 		<xsd:union>
@@ -199,7 +213,7 @@
 		</xsd:union>
 	</xsd:simpleType>
 
-	<xsd:simpleType name="ngNullType"  vs:standalone="true" >	
+	<xsd:simpleType name="ngNullType" >	
 		<xsd:union>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:string" />
@@ -218,7 +232,7 @@
 		<xsd:attribute name="ng-class-even" type="ngExpressionType"/>
 		<xsd:attribute name="ng-class-odd" type="ngExpressionType"/>
 		<xsd:attribute name="ng-click" type="ngExpressionType"/>
-		<xsd:attribute name="ng-cloak" type="ngNullType"/>
+		<xsd:attribute name="ng-cloak"  vs:standalone="true" />
 		<xsd:attribute name="ng-controller" type="ngExpressionType"/>
 		<xsd:attribute name="ng-dblclick" type="ngExpressionType"/>
 		<xsd:attribute name="ng-form" type="ngTemplateType"/>
@@ -234,7 +248,7 @@
 		<xsd:attribute name="ng-mousemove" type="ngExpressionType"/>
 		<xsd:attribute name="ng-mouseover" type="ngExpressionType"/>
 		<xsd:attribute name="ng-mouseup" type="ngExpressionType"/>
-		<xsd:attribute name="ng-non-bindable" type="ngNullType" vs:standalone="true" />
+		<xsd:attribute name="ng-non-bindable"  vs:standalone="true" />
 
 		<xsd:attribute name="ng-pluralize" type="ngPluralizeType" vs:standalone="true" vs:requiredattribute="count"/>
 		<xsd:attribute name="count" type="ngTemplateType" vs:requiredattribute="when"  />
@@ -248,9 +262,9 @@
 		<xsd:attribute name="ng-style" type="ngExpressionType"/>
 		<xsd:attribute name="ng-switch" type="ngExpressionType"/>
 		<xsd:attribute name="ng-switch-when" type="ngPredicateType"/>
-		<xsd:attribute name="ng-switch-default" type="ngNullType" vs:standalone="true" />
-		<xsd:attribute name="ng-transclude" type="ngNullType" vs:standalone="true" />
-		<xsd:attribute name="ng-view" type="ngNullType" vs:standalone="true" />
+		<xsd:attribute name="ng-switch-default"  vs:standalone="true" />
+		<xsd:attribute name="ng-transclude"  vs:standalone="true" />
+		<xsd:attribute name="ng-view"  vs:standalone="true" />
 	</xsd:attributeGroup>
 
 
@@ -259,7 +273,7 @@
 		<xsd:attribute name="ng-checked" type="ngExpressionType"/>
 		<xsd:attribute name="ng-disabled" type="ngExpressionType"/>
 		<xsd:attribute name="ng-list" type="ngTemplateType"/>
-		<xsd:attribute name="ng-model" type="ngNullType" vs:standalone="true" />
+		<xsd:attribute name="ng-model"  type="ngDatabindType" />
 		<xsd:attribute name="ng-readonly" type="ngExpressionType"/>
 		<xsd:attribute name="name" type="ngExpressionType" vs:requiredattribute="ng-model"/>
 		<xsd:attribute name="ng-change" type="ngExpressionType" vs:requiredattribute="ng-model"/>
@@ -302,7 +316,7 @@
 
 
 	<xsd:attributeGroup name="ngHtmlAttributeGroup">
-		<xsd:attribute name="ng-csp" type="ngNullType" vs:standalone="true" />
+		<xsd:attribute name="ng-csp"  vs:standalone="true" />
 		<xsd:attribute name="ng-app" type="ngModuleType"/>
 	</xsd:attributeGroup>
 
@@ -1380,7 +1394,8 @@
 
 	<xsd:element name="textarea" vs:disallowedancestor="a button">
 		<xsd:complexType mixed="true">
-			<xsd:attributeGroup ref="commonAttributeGroup" />
+      <xsd:attributeGroup ref="ngInputAttributeGroup" />
+      <xsd:attributeGroup ref="commonAttributeGroup" />
 			<xsd:attributeGroup ref="textareaServerAttributeGroup" />
 			<xsd:attribute name="autofocus" type="autofocusType" vs:standalone="true" />
 			<xsd:attribute name="disabled" type="disabledType" vs:standalone="true" />
